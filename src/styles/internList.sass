@@ -1,5 +1,5 @@
 .InternList
-    width: 40%
+    width: 75%
     margin: 150px auto
     padding: 40px 80px 80px
     background-color: #F7F7F7
@@ -23,8 +23,11 @@
             display: flex
             flex-direction: row
             justify-content: space-between
+            background-color: #EDEDED
             align-items: center
             transition: 0.5s all
+            &:nth-child(even)
+                background-color: #F2F2F2
             &:hover
                 border: 1px solid black
             &--name
@@ -42,3 +45,59 @@
                 padding: 0 20px 0 0
                 &_img
                     height: 15px
+
+@media (min-width: 1025px) and (max-width: 1200px)
+    .InternList
+        width: 90%
+        padding: 30px 30px 30px
+
+@media (min-width: 769px) and (max-width: 1024px)
+    .InternList
+        width: 90%
+        padding: 15px 25px 25px
+        &_title
+            font-size: 35px
+        &_ul
+            &-li
+                &--name
+                    font-size: 17px
+                &--button
+                    font-size: 17px
+                    &_img
+                        height: 14px
+
+@media (min-width: 481px) and (max-width: 768px)
+    .InternList
+        width: 85%
+        padding: 15px 25px 25px
+        &_title
+            font-size: 30px
+        &_ul
+            &-li
+                height: 55px
+                &--name
+                    padding: 0 0 0 15px
+                    font-size: 15px
+                &--button
+                    font-size: 15px
+                    padding: 0 15px 0 0
+                    &_img
+                        height: 12px
+
+@media (min-width: 320px) and (max-width: 480px)
+    .InternList
+        width: 80%
+        padding: 10px 20px 20px
+        &_title
+            font-size: 25px
+        &_ul
+            &-li
+                height: 50px
+                &--name
+                    padding: 0 0 0 10px
+                    font-size: 13px
+                &--button
+                    font-size: 13px
+                    padding: 0 20px 0 0
+                    &_img
+                        height: 11px

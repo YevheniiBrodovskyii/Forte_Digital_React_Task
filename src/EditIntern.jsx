@@ -12,50 +12,10 @@ const EditIntern = () => {
   const [end, inputEnd] = useState("");
 
   const [errorNameEmpty, isErrorNameEmpty] = useState(false);
-  const [errorEmailValid, iserrorEmailValid] = useState(false);
+  const [errorEmailValid, isErrorEmailValid] = useState(false);
   const [errorStartEmpty, isErrorStartEmpty] = useState(false);
   const [errorEndEmpty, isErrorEndEmpty] = useState(false);
   const [errorDate, isErrorDate] = useState(false);
-
-  const validEmail = new RegExp(/^\S+@\S+\.\S+$/);
-
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-    let startDate = new Date(start).getTime();
-    let endDate = new Date(end).getTime();
-
-    if (startDate > endDate || startDate === endDate) {
-      isErrorDate(true);
-    } else {
-      isErrorDate(false);
-    }
-
-    if (name === "") {
-      isErrorNameEmpty(true);
-    } else {
-      isErrorNameEmpty(false);
-    }
-
-    if (email === "") {
-      iserrorEmailValid(true);
-    } else if (!validEmail.test(email)) {
-      iserrorEmailValid(true);
-    } else {
-      iserrorEmailValid(false);
-    }
-
-    if (start === "") {
-      isErrorStartEmpty(true);
-    } else {
-      isErrorStartEmpty(false);
-    }
-
-    if (end === "") {
-      isErrorEndEmpty(true);
-    } else {
-      isErrorEndEmpty(false);
-    }
-  };
 
   useEffect(() => {
     const fetchIntern = async () => {
@@ -71,17 +31,59 @@ const EditIntern = () => {
     console.log(`I want to get intern with id: ${id}!`);
   }, [id]);
 
+  useEffect(() => {
+    const validEmail = new RegExp(/^\S+@\S+\.\S+$/);
+    let startDate = new Date(start).getTime();
+    let endDate = new Date(end).getTime();
+
+    isErrorDate(startDate > endDate || startDate === endDate);
+    isErrorNameEmpty(name.trim() === "");
+    isErrorEmailValid(email.trim() === "" || !validEmail.test(email));
+    isErrorStartEmpty(start.trim() === "");
+    isErrorEndEmpty(end.trim() === "");
+  }, [start, end, name, email]);
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    if (
+      errorNameEmpty ||
+      errorEmailValid ||
+      errorStartEmpty ||
+      errorEndEmpty ||
+      errorDate
+    ) {
+      console.log("Error");
+    } else {
+      let newIntern = {
+        name: name,
+        email: email,
+        internshipStart: start + "T00:00+00Z",
+        internshipEnd: end + "T00:00+00Z",
+      };
+
+      const requestOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newIntern),
+      };
+      fetch(`http://localhost:3001/interns/${id}`, requestOptions).then(
+        (response) => response.json()
+      );
+      console.log("Updated");
+    }
+  };
+
   return (
     <div className="container">
-      <img className="Logo" src="../logo.svg" alt="logo" />
+      <img className="Logo" src="../assets/logo.svg" alt="logo" />
       <section className="EditIntern">
         <NavLink to="/">
           <button className="EditIntern_back">
             <img
               className="EditIntern_back-img"
-              src="../button_back_icon.svg"
+              src="../assets/button_back_icon.svg"
               alt="button_back"
-            />{" "}
+            />
             Back to list
           </button>
         </NavLink>
@@ -107,7 +109,7 @@ const EditIntern = () => {
             <>
               <img
                 className="EditIntern_form-error_name--icon"
-                src="../error_icon.svg"
+                src="../assets/error_icon.svg"
                 alt="error"
               />
               <span className="EditIntern_form-error EditIntern_form-error_name">
@@ -123,7 +125,7 @@ const EditIntern = () => {
           </label>
           <input
             className={
-              errorNameEmpty
+              errorEmailValid
                 ? "EditIntern_form-input EditIntern_form-input_email EditIntern_form-input--error"
                 : "EditIntern_form-input EditIntern_form-input_email"
             }
@@ -138,7 +140,7 @@ const EditIntern = () => {
             <>
               <img
                 className="EditIntern_form-error_email--icon"
-                src="../error_icon.svg"
+                src="../assets/error_icon.svg"
                 alt="error"
               />
               <span className="EditIntern_form-error EditIntern_form-error_email">
@@ -154,7 +156,7 @@ const EditIntern = () => {
           </label>
           <input
             className={
-              errorNameEmpty
+              errorStartEmpty
                 ? "EditIntern_form-input EditIntern_form-input_start EditIntern_form-input--error"
                 : "EditIntern_form-input EditIntern_form-input_start"
             }
@@ -169,7 +171,7 @@ const EditIntern = () => {
             <>
               <img
                 className="EditIntern_form-error_start--icon"
-                src="../error_icon.svg"
+                src="../assets/error_icon.svg"
                 alt="error"
               />
               <span className="EditIntern_form-error EditIntern_form-error_start">
@@ -185,7 +187,7 @@ const EditIntern = () => {
           </label>
           <input
             className={
-              errorNameEmpty
+              errorEndEmpty
                 ? "EditIntern_form-input EditIntern_form-input_end EditIntern_form-input--error"
                 : "EditIntern_form-input EditIntern_form-input_end"
             }
@@ -200,7 +202,7 @@ const EditIntern = () => {
             <>
               <img
                 className="EditIntern_form-error_end--icon"
-                src="../error_icon.svg"
+                src="../assets/error_icon.svg"
                 alt="error"
               />
               <span className="EditIntern_form-error EditIntern_form-error_end">
@@ -214,12 +216,12 @@ const EditIntern = () => {
             <>
               <img
                 className="EditIntern_form-error_start--icon"
-                src="../error_icon.svg"
+                src="../assets/error_icon.svg"
                 alt="error"
               />
               <img
                 className="EditIntern_form-error_end--icon"
-                src="../error_icon.svg"
+                src="../assets/error_icon.svg"
                 alt="error"
               />
               <span className="EditIntern_form-error EditIntern_form-error_date">

@@ -1,5 +1,5 @@
 .EditIntern
-    width: 40%
+    width: 60%
     margin: 0 auto
     &_back
         font-weight: bold
@@ -14,7 +14,7 @@
             top: 2px
     &_form
         display: grid
-        padding: 40px 80px
+        padding: 40px 70px
         background: #F7F7F7
         grid-template-columns: 50% 50%
         &-title
@@ -96,7 +96,7 @@
                     grid-column: 1/2
                     grid-row: 9/10
                     position: relative
-                    left: 65%
+                    left: 75%
                     top: 10px
             &_end
                 grid-column: 2/3
@@ -105,13 +105,12 @@
                     grid-column: 2/3
                     grid-row: 9/10
                     position: relative
-                    left: 65%
+                    left: 75%
                     top: 10px
             &_date
                 grid-column: 1/3
                 grid-row: 12/13
                 text-align: center
-
         &-submit
             grid-row: 13/14
             height: 38px
@@ -119,3 +118,121 @@
             background: #222222
             color: white
             margin-top: 40px
+
+@media (min-width: 1201px) and (max-width: 1500px)
+    .EditIntern
+        &_form
+            &-error
+                &_name, &_email
+                    &--icon
+                &_start, &_end
+                    &--icon
+                        top: 14px
+                        left: 69%
+                        width: 17px
+                        height: 17px
+
+@media (min-width: 1025px) and (max-width: 1200px)
+    .EditIntern
+        width: 70%
+        &_form
+            padding: 30px 50px
+            &-error
+                &_name, &_email
+                    &--icon
+                        left: 75%
+                &_start, &_end
+                    &--icon
+                        top: 14px
+                        left: 67%
+                        width: 17px
+                        height: 17px
+
+@media (min-width: 769px) and (max-width: 1024px)
+    .EditIntern
+        width: 70%
+        &_form
+            padding: 20px 40px
+            &-error
+                font-size: 12px
+                margin-bottom: 10px
+                &_name, &_email
+                    &--icon
+                        left: 75%
+                &_start, &_end
+                    &--icon
+                        top: 13px
+                        left: 66%
+                        width: 17px
+                        height: 17px
+
+@media (min-width: 481px) and (max-width: 768px)
+    .EditIntern
+        width: 85%
+        &_back
+            font-size: 15px
+            margin: 50px 0 30px 0
+            &-img
+                position: relative
+                padding-right: 5px
+                height: 14px
+        &_form
+            padding: 10px 20px
+            &-title
+                font-size: 35px
+                margin: 0 0 15px 0
+            &-label
+                font-size: 14px
+                margin-top: 15px
+            &-input
+                font-size: 12px
+            &-error
+                font-size: 12px
+                margin-bottom: 10px
+                &_name, &_email
+                    &--icon
+                        left: 75%
+                &_start, &_end
+                    &--icon
+                        top: 14px
+                        left: 65%
+                        width: 17px
+                        height: 17px
+            &-submit
+                margin-top: 25px
+
+@media (min-width: 320px) and (max-width: 480px)
+    .EditIntern
+        width: 95%
+        &_back
+            font-size: 14px
+            margin: 50px 0 20px 0
+            &-img
+                position: relative
+                padding-right: 4px
+                height: 12px
+        &_form
+            padding: 10px 20px
+            &-title
+                font-size: 30px
+                margin: 0 0 10px 0
+            &-label
+                font-size: 12px
+                margin-top: 10px
+            &-input
+                font-size: 10px
+                padding: 2px 7px
+            &-error
+                font-size: 10px
+                margin-bottom: 10px
+                &_name, &_email
+                    &--icon
+                        left: 70%
+                &_start, &_end
+                    &--icon
+                        top: 13px
+                        left: 68%
+                        width: 17px
+                        height: 17px
+            &-submit
+                margin-top: 20px

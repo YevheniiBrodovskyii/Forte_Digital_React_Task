@@ -16,7 +16,7 @@ const InternList = () => {
 
   return (
     <div className="container">
-      <img className="Logo" src="./logo.svg" alt="logo" />
+      <img className="Logo" src="./assets/logo.svg" alt="logo" />
       <div className="InternList">
         <h1 className="InternList_title">Participants</h1>
         <ul className="InternList_ul">
@@ -27,7 +27,7 @@ const InternList = () => {
                 <button className="InternList_ul-li--button">
                   <img
                     className="InternList_ul-li--button_img"
-                    src="./button_icon.svg"
+                    src="./assets/button_icon.svg"
                     alt="button_icon"
                   />{" "}
                   Edit

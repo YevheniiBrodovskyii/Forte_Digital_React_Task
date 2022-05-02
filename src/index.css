@@ -22,4 +22,55 @@ code {
   top: 40px;
   left: 40px;
 }
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .container {
+    width: 60%;
+  }
+
+  .Logo {
+    width: 70px;
+    height: 70px;
+    top: 30px;
+    left: 30px;
+  }
+}
     
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    width: 80%;
+  }
+
+  .Logo {
+    width: 60px;
+    height: 60px;
+    top: 25px;
+    left: 25px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    width: 85%;
+  }
+
+  .Logo {
+    width: 45px;
+    height: 45px;
+    top: 15px;
+    left: 15px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+
+  .Logo {
+    width: 35px;
+    height: 35px;
+    top: 10px;
+    left: 10px;
+  }
+}
